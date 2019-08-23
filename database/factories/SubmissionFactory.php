@@ -13,7 +13,7 @@ $factory->define(Submission::class, function (Faker $faker) {
         'name' => $faker->name($gender),
         'gender' => $gender,
         'date_of_birth' => $faker->date(),
-        'city_of_residence' => $faker->city,
+        'residence' => $faker->address,
         'nationality' => $faker->word,
         'marital_status' => $faker->randomElement([Submission::STATUS_SINGLE, Submission::STATUS_MARRIED, Submission::STATUS_UNAVAILABLE]),
         'major' => $faker->word,

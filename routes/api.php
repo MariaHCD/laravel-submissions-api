@@ -13,6 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+$api = app('Dingo\Api\Routing\Router');
+
+$api->version('v1', function ($api) {
+    $api->get('submissions', 'App\Http\Controllers\SubmissionController@index');
+    $api->get('submissions/{submission}', 'App\Http\Controllers\SubmissionController@show');
+    $api->post('submissions', 'App\Http\Controllers\SubmissionController@store');
+    $api->patch('submissions/{submission}', 'App\Http\Controllers\SubmissionController@udpate');
 });

@@ -18,7 +18,7 @@ class CreateSubmissionsTable extends Migration
             $table->string('name');
             $table->string('gender');
             $table->date('date_of_birth');
-            $table->string('city_of_residence');
+            $table->string('residence');
             $table->string('nationality');
             $table->string('marital_status');
             $table->string('major');
