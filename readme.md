@@ -1,72 +1,85 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# About
+A simple API built using Laravel 5.8 to store and manage submissions received from a contact form. The main features of the API being to create, update, view, and (soft) delete submissions.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+# Getting started
 
-## About Laravel
+## Installation
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Please check the [official Laravel Documentation](https://laravel.com/docs/5.8) for server requirements and installation.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Clone the repository
 
-## Learning Laravel
+    git clone https://github.com/MariaHCD/laravel-submissions-api.git
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Switch to the repo folder and install all the dependencies using composer
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1400 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    cd laravel-submissions-api
 
-## Laravel Sponsors
+    composer install
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Copy the example env file and make the required configuration changes in the .env file
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
+    cp .env.example .env
 
-## Contributing
+Run the database migrations (**Set the database connection in .env before migrating**)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    php artisan migrate
 
-## Security Vulnerabilities
+Start the local development server
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    php artisan serve
 
-## License
+You can now access the server at http://localhost:8000
 
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**TL;DR command list**
+
+    git https://github.com/MariaHCD/laravel-submissions-api.git
+    cd laravel-submissions-api
+    composer install
+    cp .env.example .env
+    
+**Enusre that the correct database connection information have been set in .env before running the migrations**
+
+    php artisan migrate
+    php artisan serve
+
+## Database seeding
+
+**Populate the database with dummy data for questions and answers**
+
+Run the database seeder:
+
+    php artisan db:seed
+
+***Note*** : To refresh all tables in the database and run the seeders:
+
+    php artisan migrate:refresh --seed
+
+----------
+
+# Code overview
+
+## Folders
+
+- `app` - Contains all Eloquent models
+- `app/Http/Controllers` - Contains all controllers
+- `app/Http/Requests` - Contains all the form requests
+- `database/factories` - Contains the factories for all the models
+- `database/migrations` - Contains all the database migrations
+- `database/seeds` - Contains the database seeders
+- `routes` - Contains all routes defined in the file web.php
+
+## Environment variables
+
+- `.env` - Environment variables can be set in this file. The minimum required environment variables are as follows:
+
+```
+    DB_CONNECTION = mysql
+    DB_HOST = 127.0.0.1
+    DB_PORT = 3306
+    DB_DATABASE = database_name
+    DB_USERNAME = database_username
+    DB_PASSWORD = databaser_password
+```
+----------
