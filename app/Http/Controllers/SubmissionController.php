@@ -75,6 +75,8 @@ class SubmissionController extends Controller
      */
     public function destroy(Submission $submission)
     {
-        //
+        $submission->delete();
+
+        return $this->response()->noContent()->setStatusCode(200);
     }
 }

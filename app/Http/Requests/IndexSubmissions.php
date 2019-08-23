@@ -29,24 +29,38 @@ class IndexSubmissions extends FormRequest
             'gender' => [
                 'nullable',
                 'string',
-                Rule::in(Submission::GENDER_MALE, Submission::GENDER_FEMALE)
+                Rule::in(
+                    Submission::GENDER_MALE,
+                    Submission::GENDER_FEMALE
+                )
             ],
             'residence' => 'nullable|string',
             'nationality' => 'nullable|string',
             'employment_status' => [
                 'nullable',
                 'string',
-                Rule::in(Submission::EMPLOYED, Submission::UNEMPLOYED)
+                Rule::in(
+                    Submission::EMPLOYED,
+                    Submission::UNEMPLOYED
+                )
             ],
             'marital_status' => [
                 'nullable',
                 'string',
-                Rule::in(Submission::STATUS_SINGLE, Submission::STATUS_MARRIED, Submission::STATUS_UNAVAILABLE)
+                Rule::in(
+                    Submission::STATUS_SINGLE,
+                    Submission::STATUS_MARRIED,
+                    Submission::STATUS_UNAVAILABLE
+                )
             ],
             'visa_status' => [
                 'nullable',
                 'string',
-                Rule::in(Submission::VISA_VISIT, Submission::VISA_RESIDENCE, Submission::VISA_EMPLOYMENT)
+                Rule::in(
+                    Submission::VISA_VISIT,
+                    Submission::VISA_RESIDENCE,
+                    Submission::VISA_EMPLOYMENT
+                )
             ]
         ];
     }

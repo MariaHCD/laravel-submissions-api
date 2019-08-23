@@ -20,4 +20,5 @@ $api->version('v1', ['middleware' => 'bindings'], function ($api) {
     $api->get('submissions/{submission}', 'App\Http\Controllers\SubmissionController@show');
     $api->post('submissions', 'App\Http\Controllers\SubmissionController@store');
     $api->patch('submissions/{submission}', 'App\Http\Controllers\SubmissionController@update');
+    $api->delete('submissions/{submission}', 'App\Http\Controllers\SubmissionController@destroy');
 });

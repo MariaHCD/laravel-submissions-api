@@ -32,6 +32,7 @@ class CreateSubmissionsTable extends Migration
             $table->string('visa_status');
             $table->text('bio')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

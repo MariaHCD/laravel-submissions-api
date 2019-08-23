@@ -4,10 +4,11 @@ namespace App;
 
 use EloquentFilter\Filterable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Submission extends Model
 {
-    use Filterable;
+    use Filterable, SoftDeletes;
 
     const GENDER_MALE = 'male';
     const GENDER_FEMALE = 'female';

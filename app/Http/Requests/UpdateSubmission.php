@@ -30,7 +30,10 @@ class UpdateSubmission extends FormRequest
             'gender' => [
                 'sometimes',
                 'string',
-                Rule::in(Submission::GENDER_MALE, Submission::GENDER_FEMALE)
+                Rule::in(
+                    Submission::GENDER_MALE,
+                    Submission::GENDER_FEMALE
+                )
             ],
             'date_of_birth' => 'sometimes|date_format:Y-m-d',
             'residence' => 'sometimes|string|min:5',
@@ -38,7 +41,11 @@ class UpdateSubmission extends FormRequest
             'marital_status' => [
                 'sometimes',
                 'string',
-                Rule::in(Submission::STATUS_SINGLE, Submission::STATUS_MARRIED, Submission::STATUS_UNAVAILABLE)
+                Rule::in(
+                    Submission::STATUS_SINGLE,
+                    Submission::STATUS_MARRIED,
+                    Submission::STATUS_UNAVAILABLE
+                )
             ],
             'major' => 'sometimes|string|min:5',
             'degree' => 'sometimes|string|min:5',
@@ -47,7 +54,10 @@ class UpdateSubmission extends FormRequest
             'employment_status' => [
                 'sometimes',
                 'string',
-                Rule::in(Submission::EMPLOYED, Submission::UNEMPLOYED)
+                Rule::in(
+                    Submission::EMPLOYED,
+                    Submission::UNEMPLOYED
+                )
             ],
             'expected_salary' => 'sometimes|string',
             'phone_number' => 'sometimes|string|min:7',
@@ -55,7 +65,11 @@ class UpdateSubmission extends FormRequest
             'visa_status' => [
                 'sometimes',
                 'string',
-                Rule::in(Submission::VISA_VISIT, Submission::VISA_RESIDENCE, Submission::VISA_EMPLOYMENT)
+                Rule::in(
+                    Submission::VISA_VISIT,
+                    Submission::VISA_RESIDENCE,
+                    Submission::VISA_EMPLOYMENT
+                )
             ]
         ];
     }
