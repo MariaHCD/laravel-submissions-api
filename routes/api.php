@@ -15,9 +15,9 @@ use Illuminate\Http\Request;
 
 $api = app('Dingo\Api\Routing\Router');
 
-$api->version('v1', function ($api) {
+$api->version('v1', ['middleware' => 'bindings'], function ($api) {
     $api->get('submissions', 'App\Http\Controllers\SubmissionController@index');
     $api->get('submissions/{submission}', 'App\Http\Controllers\SubmissionController@show');
     $api->post('submissions', 'App\Http\Controllers\SubmissionController@store');
-    $api->patch('submissions/{submission}', 'App\Http\Controllers\SubmissionController@udpate');
+    $api->patch('submissions/{submission}', 'App\Http\Controllers\SubmissionController@update');
 });

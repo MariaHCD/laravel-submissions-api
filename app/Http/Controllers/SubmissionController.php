@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\IndexSubmissions;
+use App\Http\Requests\StoreSubmission;
+use App\Http\Requests\UpdateSubmission;
 use App\Submission;
 use App\Transformers\SubmissionTransformer;
 use Dingo\Api\Routing\Helpers;
@@ -15,6 +17,7 @@ class SubmissionController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param App\Http\Requests\IndexSubmissions $request
      * @return \Illuminate\Http\Response
      */
     public function index(IndexSubmissions $request)
@@ -29,12 +32,14 @@ class SubmissionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\StoreSubmission  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSubmission $request)
     {
-        //
+        $submission = Submission::create($request->validated());
+
+        return $this->response->item($submission, new SubmissionTransformer)->setStatusCode(201);
     }
 
     /**
@@ -45,19 +50,21 @@ class SubmissionController extends Controller
      */
     public function show(Submission $submission)
     {
-        //
+        return $this->response->item($submission, new SubmissionTransformer);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\UpdateSubmission  $request
      * @param  \App\Submission  $submission
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Submission $submission)
+    public function update(UpdateSubmission $request, Submission $submission)
     {
-        //
+        $submission->update($request->validated());
+
+        return $this->response->item($submission, new SubmissionTransformer);
     }
 
     /**
