@@ -2,10 +2,13 @@
 
 namespace App;
 
+use EloquentFilter\Filterable;
 use Illuminate\Database\Eloquent\Model;
 
 class Submission extends Model
 {
+    use Filterable;
+
     const GENDER_MALE = 'male';
     const GENDER_FEMALE = 'female';
 

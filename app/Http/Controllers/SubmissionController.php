@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\IndexSubmissions;
 use App\Submission;
 use App\Transformers\SubmissionTransformer;
 use Dingo\Api\Routing\Helpers;
@@ -16,11 +17,13 @@ class SubmissionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(IndexSubmissions $request)
     {
-        $submissions = Submission::orderBy('created_at', 'desc');
+        $submissions = Submission::filter($request->validated())
+            ->orderBy('created_at', 'desc')
+            ->paginate(ENV('PAGINATION'));
 
-        return $this->response->paginator($submissions->paginate(ENV('PAGINATION')), new SubmissionTransformer);
+        return $this->response->paginator($submissions, new SubmissionTransformer);
     }
 
     /**
