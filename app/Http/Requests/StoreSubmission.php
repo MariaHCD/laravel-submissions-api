@@ -49,7 +49,7 @@ class StoreSubmission extends FormRequest
                 'string',
                 Rule::in(Submission::EMPLOYED, Submission::UNEMPLOYED)
             ],
-            'expected_salary' => 'required|string',
+            'expected_salary' => 'required|string|min:3',
             'phone_number' => 'required|string|min:7',
             'email' => 'required|email',
             'visa_status' => [
